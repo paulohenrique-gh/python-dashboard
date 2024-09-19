@@ -11,7 +11,7 @@ def prepare_forecast_data(df):
     daily_sales = df.groupby('Data')['Saída'].sum().resample('D').sum()
     return daily_sales
 
-def forecast_sales(data, periods=180):  # Alterado para 180 dias (aproximadamente 6 meses)
+def forecast_sales(data, periods=180):
     model = ARIMA(data, order=(1,1,1))
     results = model.fit()
     forecast = results.forecast(steps=periods)

@@ -30,7 +30,6 @@ def main():
     forecast_df = pd.DataFrame({'Data': forecast.index, 'Previsão de Saída': forecast.values.round().astype(int)})
     st.dataframe(forecast_df)
 
-    # Adicionar um resumo mensal da previsão
     st.subheader('Resumo Mensal da Previsão')
     monthly_forecast = forecast_df.set_index('Data').resample('M').sum()
     monthly_forecast.index = monthly_forecast.index.strftime('%B %Y')
